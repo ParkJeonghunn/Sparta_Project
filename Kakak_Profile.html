@@ -1,0 +1,148 @@
+<!--오늘 실습에서는 em, rem, % 등 상대적 수치는 사용하지 말고, px 만 사용할 것-->
+<!--모든 요소를 감싸는 전체 div는 가로 480px, 세로 800px로 진행할 것-->
+<!--position: absolute 는 딱 하나의 요소에만 사용할 것-->
+<!--나와의 채팅, 프로필 관리, 카카오스토리 부분은 display: flex를 이용해서 배치할 것-->
+<!--부트스트랩은 사용 금지입니다!-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>카카오프로필</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Gowun Dodum', sans-serif;
+        }
+        .상태메세지창{
+
+            height: 500px;
+
+            background-color: darkseagreen;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+
+            padding-left: 80px;
+            padding-right: 80px;
+
+        }
+        .줄{
+            margin-bottom: 1px;
+            color: white;
+        }
+        .상태메세지{
+            color: black;
+        }
+        .하얀상자{
+            height: 300px;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            padding: 100px;
+        }
+        .아이콘{
+            width: 40px;
+            height: 40px;
+        }
+        .기능들{
+            width: 300px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+
+            text-align: center;
+        }
+        .기능{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+        }
+        .프로필{
+            position: absolute;
+            top: 420px;
+            left: 160px;
+
+        }
+        .프로필사진{
+            width: 150px;
+            height: 150px;
+            background-image: url("https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi.pinimg.com%2F736x%2F14%2Fd9%2F5f%2F14d95f15b34965184eb37686373d4e8c.jpg&type=sc960_832");
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            border-radius: 70%;
+
+        }
+        .프로필이름{
+            margin-top: 10px;
+            font-size: 25px;
+            text-align: center;
+        }
+        .wrap{
+            max-width: 480px;
+            max-height: 800px;
+            border: 1px solid lightgray;
+            margin: 50px auto;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="상태메세지창">
+            <div class="줄">
+                ____
+            </div>
+            <div class="상태메세지">
+                <h3>안녕하세요 저는 비모입니다! 저는 기능은 실로 다양해요. 게임기는 물론이고 뮤직플레이어, 알람기능도 있으며 카메라가 될 수도 있고 악기가 될 수 있고 비디오 플레이어도 될 수 있어요. 심지어 노래도 부를 줄 안답니다.</h3>
+            </div>
+        </div>
+        <div class="프로필">
+            <div class="프로필사진">
+            </div>
+
+            <div class="프로필이름">
+                <h5 class="프로필이름">비모</h5>
+            </div>
+        </div>
+        <div class="하얀상자">
+            <div class="기능들">
+                <div class="기능">
+                    <img class="아이콘" src="icons/나와의 채팅.png">
+                    <div class="function name">
+                        <h5 class="function name">나와의 채팅</h5>
+                    </div>
+                </div>
+
+                <div class="기능">
+                    <img class="아이콘" src="icons/카스.png" )>
+                    <div class="function name">
+                        <h5 class="function name">프로필 관리</h5>
+                    </div>
+                </div>
+
+                <div class="기능">
+                    <img class="아이콘" src="icons/프로필관리.png">
+                    <div class="function name">
+                        <h5 class="function name">카카오스토리</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
