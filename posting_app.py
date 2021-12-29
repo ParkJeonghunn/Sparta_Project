@@ -4,17 +4,26 @@ app = Flask(__name__)
 
 from pymongo import MongoClient
 client = MongoClient('mongodb+srv://test:sparta@cluster0.p2cn0.mongodb.net/Cluster0?retryWrites=true&w=majority', tlsCAFile=certifi.where())
-db = client.dbsparta
+db = client.spartagram
 
 @app.route('/')
 def home():
     return render_template('posting.html')
 
-@app.route('/posting', methods=['GET'])
-def posting_get():
-    title_receive = request.args.get('title_give')
+@app.route("/posting", methods=["GET"])
+def posting_list_get():
+    posting_num = list(db.posting.find({'num'}, {'_id': False}))
+    return jsonify({'posting_list': posting_num})
 
-    return jsonify({'result':'success', 'msg': '이 요청은 GET!'})
+@app.route('/user', methods=['POST'])
+def posting_list_post():
+    posting_list = list(db.posting.find({}, {'_id': False}))
+    count = len(posting_list) + 1
+
+    doc = {
+        'num':count
+    }
+    db.posting.insert_one(doc)
 
 @app.route('/posting', methods=['POST'])
 def posting_post():
@@ -23,7 +32,11 @@ def posting_post():
     mytime_receive = request.form['mytime_give']
     mytext_receive = request.form['mytext_give']
 
+    posting_list = list(db.posting.find({}, {'_id': False}))
+    count = len(posting_list) + 1
+
     doc = {
+        'num':count,
         'url':url_receive,
         'mylocation':mylocation_receive,
         'mytime':mytime_receive,
